@@ -19,12 +19,12 @@ public class TripController {
     private TripRepository tripRepository;
 
     @PostMapping
-    public ResponseEntity<String> createTrip(@RequestBody TripRequestPayload payload){
+    public ResponseEntity<TripCreatedResponse> createTrip(@RequestBody TripRequestPayload payload){
         Trip newTrip = new Trip(payload);
 
         this.tripRepository.save(newTrip);
         this.participantService.registerParticipantsToTrip(payload.emails_to_invite(), newTrip.getId());
 
-        return ResponseEntity.ok("Trip created");
+        return ResponseEntity.ok(new TripCreatedResponse(newTrip.getId()));
     }
 }
