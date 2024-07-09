@@ -3,10 +3,10 @@ package com.lucas.planner.trip;
 import com.lucas.planner.participant.ParticipantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/trips")
@@ -26,5 +26,12 @@ public class TripController {
         this.participantService.registerParticipantsToTrip(payload.emails_to_invite(), newTrip.getId());
 
         return ResponseEntity.ok(new TripCreatedResponse(newTrip.getId()));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Trip> getTripDetails(@PathVariable UUID id){
+        Optional<Trip> trip = this.tripRepository.findById(id);
+
+        return trip.map(ResponseEntity::ok).orElseGet(() ->ResponseEntity.notFound().build());
     }
 }
