@@ -1,4 +1,4 @@
 package com.lucas.planner.participant;
 
-public record ParticipantRequest() {
+public record ParticipantRequestPayload(String name, String email) {
 }
