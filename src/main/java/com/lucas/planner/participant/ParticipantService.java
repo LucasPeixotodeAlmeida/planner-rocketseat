@@ -2,6 +2,7 @@ package com.lucas.planner.participant;
 
 import com.lucas.planner.trip.Trip;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -32,4 +33,9 @@ public class ParticipantService {
     public void triggerConfirmationEmailToParticipants(UUID tripId) {}
 
     public void triggerConfirmationEmailToParticipant(String email) {}
+
+    public List<ParticipantData> getAllParticipantsFromTrip(UUID tripId) {
+
+        return this.participantRepository.findByTripId(tripId).stream().map(participant -> new ParticipantData(participant.getId(), participant.getName(), participant.getEmail(), participant.getIsConfirmed())).toList();
+    }
 }

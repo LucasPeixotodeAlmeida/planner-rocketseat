@@ -1,9 +1,6 @@
 package com.lucas.planner.trip;
 
-import com.lucas.planner.participant.Participant;
-import com.lucas.planner.participant.ParticipantCreateResponse;
-import com.lucas.planner.participant.ParticipantRequestPayload;
-import com.lucas.planner.participant.ParticipantService;
+import com.lucas.planner.participant.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -94,5 +91,12 @@ public class TripController {
         }
         return ResponseEntity.notFound().build();
 
+    }
+
+    @GetMapping("/{id}/participants")
+    public ResponseEntity<List<ParticipantData>> getAllParticipants(@PathVariable UUID id){
+        List<ParticipantData> participantList = this.participantService.getAllParticipantsFromTrip(id);
+
+        return ResponseEntity.ok(participantList);
     }
 }
