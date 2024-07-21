@@ -24,7 +24,7 @@ public class Link {
 
     @Column(nullable = false)
     private String title;
-    
+
     @Column(nullable = false)
     private String url;
 
