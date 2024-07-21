@@ -1,9 +1,9 @@
 package com.lucas.planner.trip;
 
-import com.lucas.planner.activities.ActivityData;
-import com.lucas.planner.activities.ActivityRequestPayload;
-import com.lucas.planner.activities.ActivityResponse;
-import com.lucas.planner.activities.ActivityService;
+import com.lucas.planner.activity.ActivityData;
+import com.lucas.planner.activity.ActivityRequestPayload;
+import com.lucas.planner.activity.ActivityResponse;
+import com.lucas.planner.activity.ActivityService;
 import com.lucas.planner.participant.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

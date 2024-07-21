@@ -1,4 +1,4 @@
-package com.lucas.planner.activities;
+package com.lucas.planner.activity;
 
 import com.lucas.planner.trip.Trip;
 import jakarta.persistence.*;

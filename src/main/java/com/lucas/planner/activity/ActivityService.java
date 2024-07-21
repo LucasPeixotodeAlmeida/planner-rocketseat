@@ -1,6 +1,5 @@
-package com.lucas.planner.activities;
+package com.lucas.planner.activity;
 
-import com.lucas.planner.participant.ParticipantData;
 import com.lucas.planner.trip.Trip;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.lucas.planner.activities;
+package com.lucas.planner.activity;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
