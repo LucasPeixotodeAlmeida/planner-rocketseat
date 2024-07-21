@@ -4,6 +4,9 @@ import com.lucas.planner.activity.ActivityData;
 import com.lucas.planner.activity.ActivityRequestPayload;
 import com.lucas.planner.activity.ActivityResponse;
 import com.lucas.planner.activity.ActivityService;
+import com.lucas.planner.link.LinkRequestPayload;
+import com.lucas.planner.link.LinkResponse;
+import com.lucas.planner.link.LinkService;
 import com.lucas.planner.participant.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +30,9 @@ public class TripController {
 
     @Autowired
     private ActivityService activityService;
+
+    @Autowired
+    private LinkService linkService;
 
     @PostMapping
     public ResponseEntity<TripCreatedResponse> createTrip(@RequestBody TripRequestPayload payload){
@@ -128,4 +134,21 @@ public class TripController {
 
         return ResponseEntity.ok(activityDataList);
     }
+
+    @PostMapping("/{id}/links")
+    public ResponseEntity<LinkResponse> registerLink(@PathVariable UUID id, @RequestBody LinkRequestPayload payload) {
+
+        Optional<Trip> trip = this.tripRepository.findById(id);
+
+        if(trip.isPresent()){
+            Trip rawTrip = trip.get();
+
+
+            LinkResponse linkResponse = this.linkService.registerLink(payload, rawTrip);
+
+            return ResponseEntity.ok(linkResponse);
+        }
+        return ResponseEntity.notFound().build();
+    }
+
 }
