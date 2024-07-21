@@ -4,6 +4,7 @@ import com.lucas.planner.activity.ActivityData;
 import com.lucas.planner.activity.ActivityRequestPayload;
 import com.lucas.planner.activity.ActivityResponse;
 import com.lucas.planner.activity.ActivityService;
+import com.lucas.planner.link.LinkData;
 import com.lucas.planner.link.LinkRequestPayload;
 import com.lucas.planner.link.LinkResponse;
 import com.lucas.planner.link.LinkService;
@@ -149,6 +150,13 @@ public class TripController {
             return ResponseEntity.ok(linkResponse);
         }
         return ResponseEntity.notFound().build();
+    }
+
+    @GetMapping("/{id}/links")
+    public ResponseEntity<List<LinkData>> getAllLinks(@PathVariable UUID id){
+        List<LinkData> linkDataList = this.linkService.getAllLinksFromId(id);
+
+        return ResponseEntity.ok(linkDataList);
     }
 
 }
