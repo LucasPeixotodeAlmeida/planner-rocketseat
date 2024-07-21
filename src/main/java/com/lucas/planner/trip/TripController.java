@@ -1,5 +1,6 @@
 package com.lucas.planner.trip;
 
+import com.lucas.planner.activities.ActivityData;
 import com.lucas.planner.activities.ActivityRequestPayload;
 import com.lucas.planner.activities.ActivityResponse;
 import com.lucas.planner.activities.ActivityService;
@@ -119,6 +120,12 @@ public class TripController {
             return ResponseEntity.ok(activityResponse);
         }
         return ResponseEntity.notFound().build();
+    }
 
+    @GetMapping("/{id}/ativities")
+    public ResponseEntity<List<ActivityData>> getAllAtivities(@PathVariable UUID id){
+        List<ActivityData> activityDataList = this.activityService.getAllActivitiesFromId(id);
+
+        return ResponseEntity.ok(activityDataList);
     }
 }
