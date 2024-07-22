@@ -40,6 +40,11 @@ public class Trip {
     @Column(name = "owner_email", nullable = false)
     private String ownerEmail;
 
+    /**
+     * Construtor para criar uma instância de Trip a partir dos dados fornecidos.
+     *
+     * parametro data Payload contendo os dados da viagem.
+     */
     public Trip(TripRequestPayload data){
         this.destination = data.destination();
         this.isConfirmed = false;
