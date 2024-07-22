@@ -32,6 +32,13 @@ public class Link {
     @JoinColumn(name = "trip_id", nullable = false)
     private Trip trip;
 
+    /**
+     * Construtor personalizado para criar um 'Link' a partir de um título, URL e uma viagem.
+     *
+     * parametro title Título do link.
+     * parametro url URL do link.
+     * parametro trip A viagem associada ao link.
+     */
     public Link(String title, String url, Trip trip) {
         this.title = title;
         this.url = url;
