@@ -34,6 +34,13 @@ public class Participant {
     @JoinColumn(name = "trip_id", nullable = false)
     private Trip trip;
 
+    /**
+     * Construtor personalizado para criar um 'Participant' a partir de um email e uma viagem.
+     * A confirmação é definida como falsa e o nome é definido como uma string vazia.
+     *
+     * parametro email Email do participante.
+     * parametro trip A viagem associada ao participante.
+     */
     public Participant(String email, Trip trip) {
         this.Email = email;
         this.trip = trip;
